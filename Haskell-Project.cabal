@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: c475f12efac9d3c845245f3baf597724f02d1b998adef056d8ccd8777fd0cf43
+-- hash: 64d242d3b6952bfbe72907b12b75d79576387889b243b7a17252adcf52d848da
 
 name:           Haskell-Project
 version:        0.1.0.0
@@ -27,7 +27,6 @@ source-repository head
 
 library
   exposed-modules:
-      DoubleUp
       Lib
   other-modules:
       Paths_Haskell_Project
@@ -40,6 +39,7 @@ library
 executable Haskell-Project-exe
   main-is: Main.hs
   other-modules:
+      DoubleUp
       Paths_Haskell_Project
   hs-source-dirs:
       app
