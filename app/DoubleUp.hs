@@ -14,6 +14,11 @@ doubleSmallNumber x = if x > 100
 doubleSmallNumber' :: (Num a, Ord a) => a -> a
 doubleSmallNumber' x = (if x > 100 then x else x*2) + 1  
 
+-- Write psudo-code 
+-- if divisible by 400 then true
+-- if divisibly by 4 then true
+-- if divisibly by 100 then false
+
 -- Helper function where Integrals "x" and "n" are passed left to right, via CoMonad, into `rem` which is then evaluated into [n] and evaluated a second time using `EQ` == ,a Boolean, to determine if the remainder is equal to 0.
 -- divBy :: Integral a => a -> [a] -> [a] though in our case it'll be y because this is the expression we're applying to our arguements. 
 -- x being your input "year"
@@ -23,7 +28,7 @@ leapYear x y = x `rem` y == 0
 isLeapYear :: Integer -> Bool
 isLeapYear year -- represented as x. "The tricky thing here is that a leap year in the Gregorian calendar occurs:"
     | divBy   4 = True -- "on every year that is evenly divisible by 4"
-    | divBy 100 = False --"except every year that is evenly divisible by 100 unless the year is also evenly divisible by 400 "
+    | divBy 100 = False -- "except every year that is evenly divisible by 100 unless the year is also evenly divisible by 400 "
     | divBy 400 = True
     | otherwise = False
     where
@@ -44,13 +49,13 @@ dasLeap y = divBy 400 || (divBy 4 && not (divBy 100)) -- Thanks SimC. Y (boolean
 
 -- year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)
 
--- if( x % 400 == 0){
+--  if( x % 400 == 0){
 --  return true;
 --  }
---  if( x % 100 == 0){
+--  else if( x % 100 == 0){
 --  return false;
 --  }
---  if( x % 4 ==0){
+--  else if( x % 4 ==0){
 --  return true;
 --  }
 --  return false;
