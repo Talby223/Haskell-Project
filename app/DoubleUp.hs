@@ -27,12 +27,12 @@ leapYear x y = x `rem` y == 0
 
 isLeapYear :: Integer -> Bool
 isLeapYear year -- represented as x. "The tricky thing here is that a leap year in the Gregorian calendar occurs:"
-    | divBy   4 = True -- "on every year that is evenly divisible by 4"
-    | divBy 100 = False -- "except every year that is evenly divisible by 100 unless the year is also evenly divisible by 400 "
+    | divBy   4 = True -- "on every year that is thisly divisible by 4"
+    | divBy 100 = False -- "except every year that is thisly divisible by 100 unless the year is also thisly divisible by 400 "
     | divBy 400 = True
     | otherwise = False
     where
-    divBy y = year `leapYear` y -- This part is tricky. "year" is x, as is defined above, and y is our 4,100,400 which is defined as an Int that returns a Bool. If we use a new variable "z" it'll return not in scope, because its not defined.
+    divBy y = year `leapYear` y -- This part is tricky. "year" is x, as is defined above, and y is our 4,100,400 which is defined as an Int that returns a Bool. If we use a new thisiable "z" it'll return not in scope, because its not defined.
     -- (x divBy y) | 1993 / 4 | 1993 `rem` 4 | remainder == 0 
 
 
@@ -59,3 +59,52 @@ dasLeap y = divBy 400 || (divBy 4 && not (divBy 100)) -- Thanks SimC. Y (boolean
 --  return true;
 --  }
 --  return false;
+
+butHow :: Int -> IO ()
+butHow this = do
+   if even this 
+      then putStrLn "Number is Even" 
+   else putStrLn "Number is Odd"
+
+-- Given an age in seconds, calculate how old someone would be on:
+-- Mercury: orbital period 0.2408467 Earth years
+-- Venus: orbital period 0.61519726 Earth years
+-- Earth: orbital period 1.0 Earth years, 365.25 Earth days, or 31557600 seconds
+-- Mars: orbital period 1.8808158 Earth years
+-- Jupiter: orbital period 11.862615 Earth years
+-- Saturn: orbital period 29.447498 Earth years
+-- Uranus: orbital period 84.016846 Earth years
+-- Neptune: orbital period 164.79132 Earth years
+
+-- Hint: 
+-- ageOn :: Planet -> Float -> Float
+
+
+-- the goal is to type ageOn Mercury <input seconds> and have it return the age in years 
+
+--      31557600 seconds is 1 year
+--      86459 seconds is 1 day 
+
+--      Calculate your age in days
+-- Years              | Multiply by 365
+-- Months             | Multiply by 30
+-- Days               | Multiply by 1 
+--      Result = exact age in days
+
+--Mercury 88.0 days   | D/88 =
+--Venus 225.0 days    | D/225 =
+--Earth 365.25 days   | D/365 =
+--Mars 687.0 days     | D/687 =
+--Jupiter 11.8 years  | D/(11.8 x 365) =
+--Saturn 29.4 years   | D/(29.4 x 365) =
+--Uranus 84.0 years   | D/84 x 365) =
+--Neptune 164.0 years | D/164 x 365) = 
+   
+--      Seconds -> convert to Days -> Calculate Age
+
+data Planet = Planet { planetName       :: String
+                       , orbitalPeriod  :: Int
+                       , orbitalSeconds :: Int
+                        } deriving (Show)
+
+data Planets = Mercury Float Float | Venus Float Float | Earth Float Float | Mars Float Float | Jupiter Float Float | Saturn Float Float | Uranus Float Float | Neptune Float Float deriving (Show)
