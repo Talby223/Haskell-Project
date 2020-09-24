@@ -1,3 +1,4 @@
+{-# LANGUAGE DataKinds #-}
 module DoubleUp where 
     
 doubleMe :: Int -> Int
@@ -107,4 +108,7 @@ data Planet = Planet { planetName       :: String
                        , orbitalSeconds :: Int
                         } deriving (Show)
 
-data Planets = Mercury Float Float | Venus Float Float | Earth Float Float | Mars Float Float | Jupiter Float Float | Saturn Float Float | Uranus Float Float | Neptune Float Float deriving (Show)
+data Planets = Mercury Float | Venus Float | Earth Float | Mars Float | Jupiter Float | Saturn Float | Uranus Float | Neptune Float deriving (Show)
+
+ageOn :: Planet -> Float -> Float
+ageOn :: Earth 
