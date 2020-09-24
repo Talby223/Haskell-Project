@@ -129,3 +129,6 @@ orbitalPeriod planet =
 ageOn :: Planet -> Float -> Float
 ageOn planet seconds =
      seconds / 31557600.0 / orbitalPeriod planet
+
+
+     
