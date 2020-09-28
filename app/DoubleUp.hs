@@ -1,6 +1,7 @@
 {-# LANGUAGE DataKinds #-}
 module DoubleUp where 
-    
+
+
 doubleMe :: Int -> Int
 doubleMe x = x + x
 
@@ -131,4 +132,18 @@ ageOn planet seconds =
      seconds / 31557600.0 / orbitalPeriod planet
 
 
-     
+-- The quick brown fox jumps over the lazy dog. Is a Pangram. I need to determin if a sentence is a pangram.
+
+-- A pangram uses every letter once
+-- check to see if a sentence uses each latter of the alphabet
+-- i have no idea how to write psduocode 
+
+sweetSpellTokens :: String -> String
+sweetSpellTokens s = unwords $ map fixToken $ words s
+
+fixToken :: String -> String
+fixToken s = if s == "$s1" then "200" else s
+
+main :: IO ()
+main = do
+  putStrLn $ sweetSpellTokens "Channel $s1 damage for 8 seconds"
