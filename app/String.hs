@@ -2,7 +2,10 @@ sweetSpellTokens :: String -> String
 sweetSpellTokens s = unwords $ map fixToken $ words s
 
 fixToken :: String -> String
-fixToken s = if s == "$" then "200" else s
+fixToken s 
+    | elem s ["$s1","$s2"] = "200" 
+    | elem s [] = "150"
+    | otherwise = "s"
 
 main :: IO ()
 main = do
